@@ -5,7 +5,7 @@ import Authentication from "./Components/Authentication/Authentication";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Routes>
         <Route
           path="/"

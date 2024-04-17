@@ -4,11 +4,11 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import PendingIcon from "@mui/icons-material/Pending";
-import GroupIcon from "@mui/iconserial/Group";
-import NotificationIcon from "@mui/icon-material/Notificatons";
+import GroupsIcon from "@mui/icons-material/Groups";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ExploreIcon from "@mui/icons-material/Explore";
 
-export const navigation = [
+export const navigationManue = [
   {
     title: "Home",
     icon: <HomeIcon />,
@@ -21,7 +21,7 @@ export const navigation = [
   },
   {
     title: "Notification",
-    icon: <NotificationIcon />,
+    icon: <NotificationsNoneIcon />,
     path: "/notification",
   },
   {
@@ -36,7 +36,7 @@ export const navigation = [
   },
   {
     title: "Communities",
-    icon: <GroupIcon />,
+    icon: <GroupsIcon />,
     path: "/Message",
   },
   {
