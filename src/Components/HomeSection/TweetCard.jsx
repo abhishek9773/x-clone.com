@@ -85,7 +85,10 @@ const TweetCard = () => {
           </div>
           \
           <div className="mt-2">
-            <div className="cursor-pointer">
+            <div
+              onClick={() => navigate("/twit/${3}")}
+              className="cursor-pointer"
+            >
               <p>
                 {" "}
                 x-clone full stack project frontend with react and bacndend with
