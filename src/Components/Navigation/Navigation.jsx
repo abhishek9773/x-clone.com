@@ -1,14 +1,13 @@
 import React from "react";
 import { navigationManue } from "./NavigationManue";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Button, Menu } from "@mui/material";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 export const Navigation = () => {
-  const [anchorEl, setAnchorEl] =
-    (React.useState < null) | (HTMLElement > null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -16,6 +15,11 @@ export const Navigation = () => {
   };
 
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("you are logout come soon!");
+    handleClose();
+  };
   return (
     <div>
       <div className="h-screen sticky top-0">
@@ -90,9 +94,8 @@ export const Navigation = () => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleClose}>Add an existing account</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout username </MenuItem>
           </Menu>
         </div>
       </div>
