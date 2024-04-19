@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Tab } from "@mui/material";
-import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
+import {
+  LocalConvenienceStoreOutlined,
+  SettingsInputComponent,
+  SettingsPowerRounded,
+} from "@mui/icons-material";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import TweetCard from "../HomeSection/TweetCard";
+import ProfileModal from "./ProfileModal";
 
 const Profile = () => {
   const [tabValue, setTabValue] = useState("1");
   const navigate = useNavigate();
+  const [openProfileModal, setOpenProfileModal] = useState(false);
+
+  const handleOpenProfileModel = () => setOpenProfileModal(true);
+  const handleClose = () => setOpenProfileModal(false);
   const handleBack = () => navigate(-1);
 
-  const handleOpenProfileModel = () => {
-    console.log("Open Profile model");
-  };
   const handleFollowUser = () => {
     console.log("follow user");
   };
@@ -145,6 +151,9 @@ const Profile = () => {
             <TabPanel value="4">Likes</TabPanel>
           </TabContext>
         </Box>
+      </section>
+      <section>
+        <ProfileModal handleClose={handleClose} open={openProfileModal} />
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
@@ -8,12 +8,17 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ReplyModal from "./ReplyModal";
 
 const TweetCard = () => {
   const navigate = navigate();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [openReplyModal, setOpenReplyModal] = useState(false);
+
+  const handleOpenReplyModel = () => setOpenReplyModal(true);
+  const handleCloseReplyModel = () => setOpenReplyModal(false);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -26,9 +31,6 @@ const TweetCard = () => {
     handleClose();
   };
 
-  const handleOpenReplyModel = () => {
-    console.log("open modle");
-  };
   const handelCreateRetweet = () => {
     console.log("handle create retweet");
   };
@@ -37,11 +39,11 @@ const TweetCard = () => {
   };
 
   return (
-    <div>
-      <div className="flex item-center font-semibold text-gray-700 py-2">
+    <React.Fragment>
+      {/* <div className="flex item-center font-semibold text-gray-700 py-2">
         <RepeatIcon />
         <p> You Retweet</p>
-      </div>
+      </div> */}
       <div className="flex space-x-5">
         <Avatar
           onClick={() => navigate(`/profile/${6}`)}
@@ -150,7 +152,10 @@ const TweetCard = () => {
           </div>
         </div>
       </div>
-    </div>
+      <section>
+        <ReplyModal open={openReplyModal} handleClose={handleCloseReplyModel} />
+      </section>
+    </React.Fragment>
   );
 };
 

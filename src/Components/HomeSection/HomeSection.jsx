@@ -1,5 +1,5 @@
 import { Avatar, Button } from "@mui/material";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
 import ImageIcon from "@mui/icons-material/Image";
@@ -53,10 +53,10 @@ const HomeSection = () => {
                   name="content"
                   placeholder="what wrong with india"
                   className={`border-none outline-none text-sl bg-transparent`}
-                  {...Formik.getFieldProps("content")}
+                  {...formik.getFieldProps("content")}
                 />
-                {Formik.errors.content && Formik.touched.content && (
-                  <span className="text-red-500">{Formik.errors.content}</span>
+                {formik.errors.content && formik.touched.content && (
+                  <span className="text-red-500">{formik.errors.content}</span>
                 )}
               </div>
               <div className="flex justify-between items-center mt-5">

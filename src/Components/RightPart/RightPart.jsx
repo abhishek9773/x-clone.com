@@ -2,9 +2,15 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import { Button } from "@mui/material";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import SubscriptionModel from "../SubscriptionModal/SubscriptionModel";
 
 const RightPart = () => {
+  const [openSubscriptionModel, setOpenSubscriptionModel] =
+    React.useState(false);
+  const handleOpenSubscriptionModel = () => setOpenSubscriptionModel(true);
+  const handleCloseSubscriptionModel = () => setOpenSubscriptionModel(false);
+
   const handleChangeTheme = () => {
     console.log("handle change theme");
   };
@@ -29,6 +35,7 @@ const RightPart = () => {
         <h1 className="text-x1 font-bold">Get Verified</h1>
         <h1 className="font-bold my-2">Subscribe to unlock new Features</h1>
         <Button
+          onClick={handleOpenSubscriptionModel}
           variant="contained"
           sx={{ padding: "10px", paddingX: "20px", borderRadius: "25px" }}
         >
@@ -41,14 +48,22 @@ const RightPart = () => {
           <p className="font-bold">WWE Speed </p>
           <p className="text-sm">Wrestling | Every Wednesday · Last night</p>
         </div>
-       { [1,1,1,1].map((items)=><div className="flex justify-between w-full">
-          <div>
-            <p className="text-sm">Politics · Trending</p>
-            <p className="font-bold">#SupremeCourt</p>
-            <p className="text-sm">13.4K posts</p>
+        {[1, 1, 1, 1].map((items) => (
+          <div className="flex justify-between w-full">
+            <div>
+              <p className="text-sm">Politics · Trending</p>
+              <p className="font-bold">#SupremeCourt</p>
+              <p className="text-sm">13.4K posts</p>
+            </div>
+            <MoreHorizIcon />
           </div>
-          <MoreHorizIcon/>
-        </div>)}
+        ))}
+      </section>
+      <section>
+        <SubscriptionModel
+          open={openSubscriptionModel}
+          handleClose={handleCloseSubscriptionModel}
+        />
       </section>
     </div>
   );
