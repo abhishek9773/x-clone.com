@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./Components/HomePage/HomePage";
 import Authentication from "./Components/Authentication/Authentication";
 import { useDispatch, userSelector } from "react-redux";
@@ -10,10 +10,12 @@ function App() {
   const jwt = localStorage.getitem("jwt");
   const { auth } = userSelector((store) => store);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (jwt) {
       dispatch(getUserProfile(jwt));
+      navigate("/");
     }
   }, [auth.jwt]);
   return (
