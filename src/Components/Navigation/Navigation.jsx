@@ -3,9 +3,14 @@ import { navigationManue } from "./NavigationManue";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { useDispatch, userSelector } from "react-redux";
+import { logout } from "../../Store/Auth/Action";
 
 export const Navigation = () => {
+  const { auth } = userSelector((store) => store);
   const [anchorEl, setAnchorEl] = React.useState(null);
+const dispath=useDispatch()
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -19,6 +24,7 @@ export const Navigation = () => {
   const handleLogout = () => {
     console.log("you are logout come soon!");
     handleClose();
+    dispath(logout())
   };
   return (
     <div>
@@ -73,8 +79,10 @@ export const Navigation = () => {
             src="https://imgs.search.brave.com/7PBc9_MSOk-hqk7TEF8Xu8VXW73QGyoBV2Y6tG1fnRc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM0/ODk2MTUzNi92ZWN0/b3IveC1sZXR0ZXIt/bG9nby1pY29uLXZl/Y3Rvci5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9QXpoRHVU/a0xnMnN3Si02TDZ3/a3liTmVfR1E0NUFz/QTBFT2VwTGlIY3hS/cz0"
           />
           <div>
-            <span> Abhishek kumar</span>
-            <span className="opacity-70">@Abhishek9773</span>
+            <p>{auth.user?.fullName}</p>
+            <span className="opacity-70">
+              {auth.user?.fullName.split(" ").join("_").toLowerCase()}
+            </span>
           </div>
           <Button
             id="basic-button"

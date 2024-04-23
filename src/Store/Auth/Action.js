@@ -8,11 +8,13 @@ import {
   REGISTER_USER_FAILURE,
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
+  LOGOUT,
 } from "./ActionType";
 
 export const loginUser = (loginData) => async (dispatch) => {
   try {
     const { data } = await axios.post(`${API_BASE_URL}/auth/signin`, loginData);
+    console.log("login user", data)
     if (data.jwt) {
       localStorage.setItem("jwt", data.jwt);
     }
@@ -29,8 +31,9 @@ export const registerUser = (registerData) => async (dispatch) => {
       `${API_BASE_URL}/auth/signup`,
       registerData
     );
+    console.log("signup user ", data)
     if (data.jwt) {
-      localStorage.setItem("jwt", data.jwt);
+      localStorage.setItem("jwt", data.jwt)
     }
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.jwt });
   } catch (error) {
@@ -52,4 +55,10 @@ export const getUserProfile = (jwt) => async (dispatch) => {
     console.log("error", error);
     dispatch({ type: GET_USER_PROFILE_FAILURE, payload: error.message });
   }
+};
+
+
+export const logout = () => async (dispatch) => {
+    localStorage.removeItem('jwt');
+    dispatch({type:LOGOUT, payload:null})
 };
